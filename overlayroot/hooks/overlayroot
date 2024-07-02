@@ -15,12 +15,8 @@ copy_exec /sbin/wipefs /sbin
 copy_exec /sbin/cryptsetup /sbin
 copy_exec /sbin/mke2fs /sbin
 
-manual_add_modules overlayfs
-manual_add_modules overlay
-manual_add_modules dm_mod
-manual_add_modules dm_crypt
-# this is '||' only in case this module isn't built
-manual_add_modules aesni_intel || true
+# this is '||' only in case aesni_intel module isn't built (or others are built in)
+manual_add_modules overlayfs overlay dm_mod dm_crypt aesni_intel || true
 
 # Grab as much true random data as possible, up to 4KB, and stash it into a
 # random seed in the initramfs
