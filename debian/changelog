@@ -1,3 +1,10 @@
+cloud-initramfs-tools (0.49) oracular; urgency=medium
+
+  [ Benjamin Drung ]
+  * overlayroot: Combine calls to manual_add_modules (LP: #2065180)
+
+ -- Paride Legovini <paride@ubuntu.com>  Tue, 02 Jul 2024 12:38:14 +0200
+
 cloud-initramfs-tools (0.48) noble; urgency=medium
 
   [ Brian Murray ]
