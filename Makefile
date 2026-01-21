@@ -1,6 +1,7 @@
 MODULES = growroot rescuevol overlayroot dyn-netconf copymods rooturl updateroot
 INITRAMFS_D = /usr/share/initramfs-tools
 IRD = $(DESTDIR)/$(INITRAMFS_D)
+DRACUT_D = /usr/lib/dracut
 ULIB_PRE = $(DESTDIR)/usr/lib/cloud-initramfs-
 
 build:
@@ -37,6 +38,11 @@ install:
 		[ -d "$$d/tools" ] || continue ; \
 		mkdir -p "$(ULIB_PRE)$$d/" && \
 		install "$$d/tools"/* "$(ULIB_PRE)$$d/" ; \
+		done
+	set -e ; for d in $(MODULES); do \
+		[ -d "$$d/dracut.modules.d" ] || continue; \
+		mkdir -p "$(DESTDIR)$(DRACUT_D)/modules.d/50$$d"; \
+		install -m 755 "$$d"/dracut.modules.d/*.sh "$(DESTDIR)$(DRACUT_D)/modules.d/50$$d/" ; \
 		done
 	mkdir -p "$(DESTDIR)/usr/sbin" "$(DESTDIR)/usr/share/man/man8"
 	install -m 755 "overlayroot/usr/sbin/overlayroot-chroot" "$(DESTDIR)/usr/sbin"

@@ -67,9 +67,10 @@ Description: write a network interface file in /run for BOOTIF
 
 Package: cloud-initramfs-copymods
 Architecture: all
-Depends: initramfs-tools,
+Depends: dracut (>= 109) | initramfs-tools,
          ${misc:Depends},
          ${shlibs:Depends}
+Breaks: dracut-core (<< 109)
 Description: copy initramfs modules into root filesystem for later use
  When booting with an external-to-root kernel and initramfs, you need
  to ensure that /lib/modules contains any necessary modules not already
