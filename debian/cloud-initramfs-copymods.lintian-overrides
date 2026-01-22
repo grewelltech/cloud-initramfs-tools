@@ -1,1 +1,1 @@
-cloud-initramfs-copymods: package-contains-empty-directory [lib/modules/]
+cloud-initramfs-copymods: package-contains-empty-directory [usr/lib/modules/]
