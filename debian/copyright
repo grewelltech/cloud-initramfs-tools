@@ -2,7 +2,9 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: cloud-initramfs-tools
 
 Files: *
-Copyright: 2011 Scott Moser <scott.moser@canonical.com>
+Copyright:
+ 2011 Scott Moser <scott.moser@canonical.com>
+ 2026 Canonical Ltd.
 License: GPL-3.0+
 
 Files: debian/*
@@ -10,7 +12,7 @@ Copyright:
  2011 Scott Moser <smoser@ubuntu.com>
  2012 Dustin Kirkland <kirkland@ubuntu.com>
  2012 Axel Heider
- 2024 Canonical Ltd.
+ 2024-2026 Canonical Ltd.
 License: GPL-3.0+
 
 License: GPL-3.0+
