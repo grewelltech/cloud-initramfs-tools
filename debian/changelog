@@ -1,3 +1,16 @@
+cloud-initramfs-tools (0.50) resolute; urgency=medium
+
+  [ Benjamin Drung ]
+  * copymods: support using the Dracut kernel-modules-export (LP: #2125790)
+  * copymods: claim /usr/lib/modules directory instead of /lib/modules
+
+  [ Paride Legovini ]
+  * d/control: bump Standards-Version to 4.7.2, no changes needed
+  * d/control: drop redundant Rules-Requires-Root field
+  * d/copyright: update copyright information
+
+ -- Paride Legovini <paride@ubuntu.com>  Fri, 23 Jan 2026 15:50:47 +0100
+
 cloud-initramfs-tools (0.49) oracular; urgency=medium
 
   [ Benjamin Drung ]
