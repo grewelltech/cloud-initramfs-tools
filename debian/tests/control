@@ -1,0 +1,4 @@
+Tests: copymods-dracut
+Architecture: !armel !i386
+Restrictions: allow-stderr, needs-root
+Depends: cloud-initramfs-copymods, dracut-test (>= 110), xfsprogs
