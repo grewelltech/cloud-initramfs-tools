@@ -1,3 +1,11 @@
+cloud-initramfs-tools (0.51) resolute; urgency=medium
+
+  * Add autopkgtest to test copymods with dracut
+  * overlayroot: support dracut overlayfs as alternative (LP: #2125790)
+  * rooturl: support dracut livenet as alternative (LP: #2125790)
+
+ -- Benjamin Drung <bdrung@ubuntu.com>  Tue, 10 Feb 2026 16:23:59 +0100
+
 cloud-initramfs-tools (0.50) resolute; urgency=medium
 
   [ Benjamin Drung ]

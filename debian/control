@@ -43,10 +43,11 @@ Package: overlayroot
 Architecture: all
 Depends: cryptsetup,
          cryptsetup-bin,
-         initramfs-tools,
+         dracut (>= 110) | initramfs-tools,
          ${misc:Depends},
          ${shlibs:Depends}
 Suggests: haveged
+Breaks: dracut-core (<< 110)
 Description: use an overlayfs on top of a read-only root filesystem
  This package adds functionality to an initramfs built by initramfs-tools.
  When installed and configured, the initramfs will mount an overlayfs
@@ -80,9 +81,11 @@ Description: copy initramfs modules into root filesystem for later use
 
 Package: cloud-initramfs-rooturl
 Architecture: all
-Depends: initramfs-tools,
+Depends: dracut (>= 110) | initramfs-tools,
+         dracut-network (>= 110) | initramfs-tools,
          ${misc:Depends},
          ${shlibs:Depends}
+Breaks: dracut-core (<< 110), dracut-network (<< 110)
 Description: use a tarball or squashfs image in a url as the root filesystem
  Allows user to pass in root=http://example.com/your.tar.gz
  Root filesystem will be tmpfs from that url.
