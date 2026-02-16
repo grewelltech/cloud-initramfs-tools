@@ -1,3 +1,10 @@
+cloud-initramfs-tools (0.52) resolute; urgency=medium
+
+  * overlayroot: new size,nr_inodes,nr_blocks parameters for tmpfs
+    (LP: #2139105)
+
+ -- Jonas Jelten <jj@ubuntu.com>  Mon, 16 Feb 2026 15:40:42 +0100
+
 cloud-initramfs-tools (0.51) resolute; urgency=medium
 
   * Add autopkgtest to test copymods with dracut
