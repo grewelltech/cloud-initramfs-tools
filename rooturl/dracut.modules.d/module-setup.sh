@@ -1,16 +1,13 @@
 #!/bin/bash
 
 # called by dracut
-check() {
-    # The dmsquash-live Dracut module rejects working in host-only mode.
-    if [[ $hostonly ]]; then
-        dwarning "${moddir##*/}: not included in host-only mode."
-        return 1
-    fi
-    return 0
+depends() {
+    echo systemd-import
 }
 
 # called by dracut
-depends() {
-    echo livenet
+install() {
+    inst_hook cmdline 50 "$moddir/parse-rooturl.sh"
+    # rooturl-generator.sh must run after systemd-fstab-generator to overwrite sysroot.mount
+    inst_script "$moddir/rooturl-generator.sh" "$systemdutildir"/system-generators/zzz-dracut-rooturl-generator
 }
