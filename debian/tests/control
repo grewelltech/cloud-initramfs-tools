@@ -7,3 +7,13 @@ Tests: overlayroot-dracut
 Architecture: !armel !i386
 Restrictions: allow-stderr, needs-root
 Depends: dracut-test (>= 110), overlayroot
+
+Tests: rooturl-dracut
+Architecture: !armel !i386
+Restrictions: allow-stderr, needs-root
+Depends: cloud-initramfs-rooturl,
+         dracut-test (>= 110),
+         python3,
+         squashfs-tools,
+         xz-utils,
+         zstd

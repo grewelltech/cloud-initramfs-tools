@@ -83,6 +83,7 @@ Package: cloud-initramfs-rooturl
 Architecture: all
 Depends: dracut (>= 110) | initramfs-tools,
          dracut-network (>= 110) | initramfs-tools,
+         systemd-container | initramfs-tools,
          ${misc:Depends},
          ${shlibs:Depends}
 Breaks: dracut-core (<< 110), dracut-network (<< 110)
