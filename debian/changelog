@@ -1,3 +1,10 @@
+cloud-initramfs-tools (0.53) resolute; urgency=medium
+
+  [ Benjamin Drung ]
+  * rooturl: use systemd-import on Dracut to support tarballs (LP: #2142564)
+
+ -- Paride Legovini <paride@ubuntu.com>  Tue, 24 Feb 2026 12:30:44 +0100
+
 cloud-initramfs-tools (0.52) resolute; urgency=medium
 
   * overlayroot: new size,nr_inodes,nr_blocks parameters for tmpfs
