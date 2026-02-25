@@ -12,6 +12,7 @@ Tests: rooturl-dracut
 Architecture: !armel !i386
 Restrictions: allow-stderr, needs-root
 Depends: cloud-initramfs-rooturl,
+         dracut,
          dracut-test (>= 110),
          python3,
          squashfs-tools,
