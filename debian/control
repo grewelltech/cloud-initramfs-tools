@@ -67,9 +67,7 @@ Description: write a network interface file in /run for BOOTIF
 
 Package: cloud-initramfs-copymods
 Architecture: all
-Depends: dracut (>= 109) | initramfs-tools,
-         ${misc:Depends},
-         ${shlibs:Depends}
+Depends: dracut (>= 109) | initramfs-tools, ${misc:Depends}, ${shlibs:Depends}
 Breaks: dracut-core (<< 109)
 Description: copy initramfs modules into root filesystem for later use
  When booting with an external-to-root kernel and initramfs, you need
@@ -93,9 +91,7 @@ Description: use a tarball or squashfs image in a url as the root filesystem
 
 Package: cloud-initramfs-updateroot
 Architecture: all
-Depends: initramfs-tools,
-         ${misc:Depends},
-         ${shlibs:Depends}
+Depends: initramfs-tools, ${misc:Depends}, ${shlibs:Depends}
 Description: extract a tarball over root filesystem before pivot
  Allows kernel command line updateroot=http://your.tar.gz
  And then tarball will be pulled and extracted over the root.
