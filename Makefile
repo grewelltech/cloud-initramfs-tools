@@ -40,9 +40,10 @@ install:
 		install "$$d/tools"/* "$(ULIB_PRE)$$d/" ; \
 		done
 	set -e ; for d in $(MODULES); do \
+		if [ "$$d" = dyn-netconf ]; then module_number=05; else module_number=50; fi; \
 		[ -d "$$d/dracut.modules.d" ] || continue; \
-		mkdir -p "$(DESTDIR)$(DRACUT_D)/modules.d/50$$d"; \
-		install -m 755 "$$d"/dracut.modules.d/*.sh "$(DESTDIR)$(DRACUT_D)/modules.d/50$$d/" ; \
+		mkdir -p "$(DESTDIR)$(DRACUT_D)/modules.d/$$module_number$$d"; \
+		install -m 755 "$$d"/dracut.modules.d/*.sh "$(DESTDIR)$(DRACUT_D)/modules.d/$$module_number$$d/" ; \
 		done
 	mkdir -p "$(DESTDIR)/usr/sbin" "$(DESTDIR)/usr/share/man/man8"
 	install -m 755 "overlayroot/usr/sbin/overlayroot-chroot" "$(DESTDIR)/usr/sbin"
