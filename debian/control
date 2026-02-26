@@ -59,7 +59,11 @@ Description: use an overlayfs on top of a read-only root filesystem
 
 Package: cloud-initramfs-dyn-netconf
 Architecture: all
-Depends: initramfs-tools, ${misc:Depends}, ${shlibs:Depends}
+Depends: dracut (>= 110) | initramfs-tools,
+         dracut-network (>= 110) | initramfs-tools,
+         systemd | initramfs-tools,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: write a network interface file in /run for BOOTIF
  This package provides an initramfs module that will write a simple
  network interfaces formatted file to /run/network/interfaces with
