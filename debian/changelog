@@ -1,3 +1,13 @@
+cloud-initramfs-tools (0.54) resolute; urgency=medium
+
+  * autopkgtest: explicitly pull in dracut for rooturl test
+  * dyn-netconf: support dracut by pulling in systemd-networkd (LP: #2125790)
+  * Drop redundant priority optional
+  * Bump Standards-Version to 4.7.3
+  * Override executable-in-usr-lib lintian warning for Dracut modules dir
+
+ -- Benjamin Drung <bdrung@ubuntu.com>  Fri, 27 Feb 2026 10:31:34 +0100
+
 cloud-initramfs-tools (0.53) resolute; urgency=medium
 
   [ Benjamin Drung ]
