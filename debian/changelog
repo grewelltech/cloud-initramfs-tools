@@ -1,3 +1,10 @@
+cloud-initramfs-tools (0.55) resolute; urgency=medium
+
+  [ Benjamin Drung ]
+  * copymods: enable by default when using dracut
+
+ -- Paride Legovini <paride@ubuntu.com>  Thu, 05 Mar 2026 18:59:57 +0100
+
 cloud-initramfs-tools (0.54) resolute; urgency=medium
 
   * autopkgtest: explicitly pull in dracut for rooturl test
