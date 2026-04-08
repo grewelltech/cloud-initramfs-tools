@@ -74,6 +74,13 @@ Options=$mount_options
 EOF
     generator_add_symlink "$generator_dir" initrd-root-fs.target.requires sysroot.mount
     generator_add_symlink "$generator_dir" initrd-usr-fs.target.requires sysroot.mount
+
+    # Workaround for https://github.com/systemd/systemd/issues/41352
+    mkdir -p "$generator_dir/dracut-remount-sysroot.service.d"
+    cat > "$generator_dir/dracut-remount-sysroot.service.d/drop-cmdline-condition.conf" << EOF
+[Unit]
+ConditionKernelCommandLine=
+EOF
 }
 
 parse_root() {
