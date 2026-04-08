@@ -59,7 +59,7 @@ test_run() {
 
 test_setup() {
     # Create plain root filesystem
-    build_client_rootfs "$TESTDIR/rootfs"
+    build_client_rootfs "$TESTDIR/rootfs" debian/tests/rooturl-dracut-assertion.sh
 
     # Create a compressed tarball with the plain rootfs
     tar -C "$TESTDIR/rootfs" --zstd -cf "$TESTDIR/root.tar.zst" .
