@@ -1,6 +1,16 @@
 #!/bin/sh
+set -eu
 
 # required binaries: cat grep
+
+check_compat_symlink() {
+    if ! [ -L /media/root-ro ]; then
+        echo "missing compatibility symlink: /media/root-ro" >> /run/failed
+    fi
+    if ! [ -e /media/root-ro/usr/lib/os-release ]; then
+        echo "/media/root-ro/usr/lib/os-release does not exist. Broken /media/root-ro symlink?" >> /run/failed
+    fi
+}
 
 if grep -q 'test.expect=none' /proc/cmdline; then
     if grep -q " overlay " /proc/mounts; then
@@ -13,6 +23,10 @@ else
 
     if ! echo > /test-overlay-write; then
         echo "overlay is not writable" >> /run/failed
+    fi
+
+    if grep -q overlayroot /proc/cmdline; then
+        check_compat_symlink
     fi
 fi
 
