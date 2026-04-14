@@ -1,3 +1,10 @@
+cloud-initramfs-tools (0.57) resolute; urgency=medium
+
+  [ Benjamin Drung ]
+  * overlayroot: add /media/root-ro compat symlink (LP: #2147471)
+
+ -- Paride Legovini <paride@ubuntu.com>  Tue, 14 Apr 2026 12:51:20 +0200
+
 cloud-initramfs-tools (0.56) resolute; urgency=medium
 
   [ Benjamin Drung ]
