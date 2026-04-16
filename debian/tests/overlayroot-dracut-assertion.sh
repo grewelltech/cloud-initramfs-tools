@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-# required binaries: cat grep
+# required binaries: cat grep sort cut
 
 check_compat_symlink() {
     if ! [ -L /media/root-ro ]; then
@@ -30,10 +30,37 @@ else
     fi
 fi
 
+check_crypt_mounted() {
+    if ! grep -q "^/dev/mapper/overlay-crypt /run/overlayfs-backing " /proc/mounts; then
+        echo "encrypted overlay not mounted at /run/overlayfs-backing" >> /run/failed
+    fi
+}
+
+check_crypt_device() {
+    local _dm
+    for _dm in /sys/class/block/dm-*; do
+        if [ "$(cat "$_dm/dm/name" 2> /dev/null)" = "overlay-crypt" ]; then
+            grep -q "^CRYPT-" "$_dm/dm/uuid" 2> /dev/null && return 0
+            break
+        fi
+    done
+    echo "overlay-crypt is not a dm-crypt device" >> /run/failed
+}
+
+check_crypt_passphrase() {
+    if [ ! -f /run/initramfs/overlayfs.passwd ]; then
+        echo "password file /run/initramfs/overlayfs.passwd not found" >> /run/failed
+    fi
+}
+
 if grep -q 'test.expect=device' /proc/cmdline; then
     if ! grep -q "/run/overlayfs-backing" /proc/mounts; then
         echo "persistent overlay device not mounted at /run/overlayfs-backing" >> /run/failed
     fi
+elif grep -q 'test.expect=crypt' /proc/cmdline; then
+    check_crypt_mounted
+    check_crypt_device
+    check_crypt_passphrase
 else
     if grep -q "/run/overlayfs-backing" /proc/mounts; then
         echo "persistent overlay device is mounted at /run/overlayfs-backing" >> /run/failed

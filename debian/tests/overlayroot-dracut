@@ -22,6 +22,7 @@ client_run() {
     declare -a disk_args=()
     qemu_add_drive disk_args "$TESTDIR"/root.img root
     qemu_add_drive disk_args "$TESTDIR"/overlay.img overlay
+    qemu_add_drive disk_args "$TESTDIR"/crypt.img crypt
 
     "$testdir"/run-qemu -nic none \
         "${disk_args[@]}" \
@@ -30,6 +31,12 @@ client_run() {
     check_qemu_log
 
     client_test_end
+}
+
+setup_crypt_disk() {
+    rm -f "$TESTDIR"/crypt.img
+    truncate -s 100M "$TESTDIR"/crypt.img
+    mkfs.ext4 -q -L CRYPT "$TESTDIR"/crypt.img
 }
 
 test_run() {
@@ -41,6 +48,10 @@ test_run() {
     client_run "overlayroot=UUID" "overlayroot=UUID=$overlay_uuid test.expect=device"
     client_run "overlayroot=/dev" \
         "overlayroot=/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_overlay test.expect=device"
+
+    setup_crypt_disk
+    client_run "overlayroot=crypt (new device, random password)" \
+        "overlayroot=crypt:dev=LABEL=CRYPT test.expect=crypt"
 }
 
 test_setup() {
@@ -54,6 +65,8 @@ test_setup() {
     rm -f "$TESTDIR"/overlay.img
     truncate -s 32M "$TESTDIR"/overlay.img
     mkfs.ext4 -q -L OVERLAY "$TESTDIR"/overlay.img
+
+    setup_crypt_disk
 
     test_dracut
 }

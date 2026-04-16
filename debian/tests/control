@@ -6,7 +6,7 @@ Depends: cloud-initramfs-copymods, dracut-test (>= 110), xfsprogs
 Tests: overlayroot-dracut
 Architecture: !armel !i386
 Restrictions: allow-stderr, needs-root
-Depends: dracut-test (>= 110), overlayroot
+Depends: dracut-test (>= 110), e2fsprogs, overlayroot
 
 Tests: rooturl-dracut
 Architecture: !armel !i386
