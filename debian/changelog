@@ -1,3 +1,10 @@
+cloud-initramfs-tools (0.58ubuntu) resolute; urgency=medium
+
+  * overlayroot: support dracut overlayfs-crypt as alternative
+    (LP: #2148194)
+
+ -- Nadzeya Hutsko <nadzeya.hutsko@canonical.com>  Thu, 16 Apr 2026 16:00:15 +0200
+
 cloud-initramfs-tools (0.57) resolute; urgency=medium
 
   [ Benjamin Drung ]

@@ -2,7 +2,7 @@
 
 # called by dracut
 depends() {
-    echo overlayfs
+    echo overlayfs overlayfs-crypt
 }
 
 # called by dracut
